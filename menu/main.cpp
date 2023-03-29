@@ -13,9 +13,9 @@ void CountingSort(int *, int);
 void QuickSort(int* ,int , int);
 void Merge(int*, int, int, int);
 void MergeSort(int *, int, int);
-void HeapSort(int*, int);
+void HeapSort(int*, int); //source code: https://www.sortvisualizer.com/heapsort/
 void ShellSort(int *,int);
-void RadixSort(int *,int);
+void RadixSort(int *,int); //source code: https://www.sortvisualizer.com/radixsort/
 int getInteger();
 void generateArray(int *, int);
 void output(int *, int);
@@ -156,34 +156,6 @@ int main()
 }
 
 
-
-void QuickSort(int *a, int l, int r)
-{
-    int x = a[(l+r)/2]; //xac dinh gia tri truc x(phan tu chinh giua)
-    int i = l; //khoi tao dau doc i
-    int j = r; //khoi tao dau doc j
-    while(i<=j)
-    {
-        while(a[i]>x)
-        {
-            i++; //cho i chay den khi gap gia tri >=x thi dung
-        }
-        while(a[j]<x)
-        {
-            j--; //cho j chay den khi gap gia tri <=x thi dung
-        }
-        if(i<=j)
-        {
-            swap(a[i], a[j]);
-
-            i++;
-            j--;
-        }//hoan vi 2 phan tu tai i,j sau do tang i, giam j de bat dau cho vi tri moi
-    }
-    if(l<j) QuickSort(a,l,j);
-    if(i<r) QuickSort(a,i,r);//tiep tuc cho i,j chay nen lap tu buoc 3 den buoc 5 cho den khi j vuot qua i thi dung
-}
-
 void SelectionSort(int *a, int n)
 {
     for(int i=0;i<n;i++)
@@ -200,35 +172,13 @@ void SelectionSort(int *a, int n)
     }
 }
 
-void Merge(int *a, int left, int mid, int right)
-{
-    int *temp = new int[right - left+1 ];
-    int m = 0;
-    int i = left;
-    int j = mid+1;
-    while(!(i>mid && j>right))
-    {
-        if((i<=mid && j<=right && a[i]<a[j]) || j>right)
-        {
-            temp[m++] = a[i++];
-        }
-        else temp[m++] = a[j++];
-    }
-    for(int i=0;i<m;i++)
-    {
-        a[left+i] = temp[i];
-    }
-    delete[] temp;
-}
 
-void MergeSort(int *a, int l, int r)
+void InterchangeSort(int *a, int n)
 {
-    if(l<r)
+    for(int i=0;i<=n-2;i++)
     {
-        int mid = (l+r)/2;
-        MergeSort(a,l,mid);
-        MergeSort(a,mid+1,r);
-        Merge(a,l,mid,r);
+        for(int j=i+1;j<=n-1;j++)
+            if(a[i]>a[j]) swap(a[i],a[j]);
     }
 }
 
@@ -266,7 +216,6 @@ void BinaryInsertionSort(int *a, int n)
     }
 }
 
-
 void BubbleSort(int *a, int n)
 {
     for(int i=0;i<n;i++)
@@ -277,12 +226,88 @@ void BubbleSort(int *a, int n)
     }
 }
 
-void InterchangeSort(int *a, int n)
+void ShakerSort(int *a,int l,int r){
+    int i=l;
+    int j=r;
+    int ping=0;
+    while(l<r){
+        for(int i=l;i<r;i++){
+            if(a[i]>a[i+1]){
+                swap(a[i],a[i+1]);
+                ping = i;
+            }
+        }
+        r=ping;
+        for(int j=r;j>l;j--){
+            if(a[j]<a[j-1]){
+                swap(a[j],a[j-1]);
+                ping = j;
+            }
+        }
+        l=ping;
+    }
+}
+
+
+
+void QuickSort(int *a, int l, int r)
 {
-    for(int i=0;i<=n-2;i++)
+    int x = a[(l+r)/2]; //xac dinh gia tri truc x(phan tu chinh giua)
+    int i = l; //khoi tao dau doc i
+    int j = r; //khoi tao dau doc j
+    while(i<=j)
     {
-        for(int j=i+1;j<=n-1;j++)
-            if(a[i]>a[j]) swap(a[i],a[j]);
+        while(a[i]<x)
+        {
+            i++; //cho i chay den khi gap gia tri >=x thi dung
+        }
+        while(a[j]>x)
+        {
+            j--; //cho j chay den khi gap gia tri <=x thi dung
+        }
+        if(i<=j)
+        {
+            swap(a[i], a[j]);
+
+            i++;
+            j--;
+        }//hoan vi 2 phan tu tai i,j sau do tang i, giam j de bat dau cho vi tri moi
+    }
+    if(l<j) QuickSort(a,l,j);
+    if(i<r) QuickSort(a,i,r);//tiep tuc cho i,j chay nen lap tu buoc 3 den buoc 5 cho den khi j vuot qua i thi dung
+}
+
+
+
+void Merge(int *a, int left, int mid, int right)
+{
+    int *temp = new int[right - left+1 ];
+    int m = 0;
+    int i = left;
+    int j = mid+1;
+    while(!(i>mid && j>right))
+    {
+        if((i<=mid && j<=right && a[i]<a[j]) || j>right)
+        {
+            temp[m++] = a[i++];
+        }
+        else temp[m++] = a[j++];
+    }
+    for(int i=0;i<m;i++)
+    {
+        a[left+i] = temp[i];
+    }
+    delete[] temp;
+}
+
+void MergeSort(int *a, int l, int r)
+{
+    if(l<r)
+    {
+        int mid = (l+r)/2;
+        MergeSort(a,l,mid);
+        MergeSort(a,mid+1,r);
+        Merge(a,l,mid,r);
     }
 }
 
@@ -314,28 +339,6 @@ void HeapSort(int *a, int n)
     {
       swap(a[0], a[i]);
       Heapify(a, i, 0);
-    }
-}
-
-void ShakerSort(int *a,int l,int r){
-    int i=l;
-    int j=r;
-    int ping=0;
-    while(l<r){
-        for(int i=l;i<r;i++){
-            if(a[i]>a[i+1]){
-                swap(a[i],a[i+1]);
-                ping = i;
-            }
-        }
-        r=ping;
-        for(int j=r;j>l;j--){
-            if(a[j]<a[j-1]){
-                swap(a[j],a[j-1]);
-                ping = j;
-            }
-        }
-        l=ping;
     }
 }
 
@@ -394,8 +397,8 @@ int getInteger()
     do
     {
         cin>>n;
-        if(n<=10000 || n>100000000) cout<<"Enter the array's size again\n";
-    } while (n<=10000 || n>100000000);
+        if(n<=1 || n>100000000) cout<<"Enter the array's size again\n";
+    } while (n<=1 || n>100000000);
     return n;
 }
 
