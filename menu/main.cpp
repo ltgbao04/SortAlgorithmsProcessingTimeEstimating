@@ -15,6 +15,7 @@ void Merge(int*, int, int, int);
 void MergeSort(int *, int, int);
 void HeapSort(int*, int); 
 void ShellSort(int *,int);
+void RadixSort(int *,int);
 int getInteger();
 void generateArray(int *, int);
 void output(int *, int);
@@ -120,7 +121,7 @@ int main()
             case 11:
             {
                 clock_t start = clock();
-                Shellsort(b,n);
+                ShellSort(b,n);
                 clock_t end = clock();
                 cout << "Time: " << end - start << endl;
                 break;
@@ -346,6 +347,44 @@ void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau d
     }
 }
 
+                    
+
+int getMax(int *a, int n)
+{
+    int max = a[0];
+    for (int i = 1; i < n; i++)
+        if (a[i] > max)
+            max = a[i];
+    return max;
+}
+
+void countSort(int *a, int n, int exp)
+{
+    int output[n];
+    int i, count[10] = { 0 };
+    for (i = 0; i < n; i++)
+        count[(a[i] / exp) % 10]++;
+
+    for (i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    for (i = n - 1; i >= 0; i--) {
+        output[count[(a[i] / exp) % 10] - 1] = a[i];
+        count[(a[i] / exp) % 10]--;
+    }
+
+    for (i = 0; i < n; i++)
+        a[i] = output[i];
+}
+
+void RadixSort(int *a, int n)
+{
+
+    int m = getMax(a, n);
+    for (int exp = 1; m / exp > 0; exp *= 10)
+        countSort(a, n, exp);
+}
+
 int getInteger()
 {
     int n;
@@ -359,8 +398,6 @@ int getInteger()
 
 }
 
-
-
 void generateArray(int *a, int n)
 {
     int c = -10001;
@@ -373,7 +410,6 @@ void output(int *a, int n)
 {
     for(int i=0;i<n;i++)
         cout << a[i] << " ";
-    
 }
 
 void copyArray(int *a, int *b, int n)
@@ -400,6 +436,4 @@ void Menu()
     cout << "12.Radix Sort" << endl;
     cout << "13.Exit" << endl;
     cout << "Choose an algorithm: " << endl;
-
 }
-
