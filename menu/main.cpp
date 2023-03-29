@@ -14,6 +14,7 @@ void QuickSort(int* ,int , int);
 void Merge(int*, int, int, int);
 void MergeSort(int *, int, int);
 void HeapSort(int*, int); 
+void ShellSort(int *,int);
 int getInteger();
 void generateArray(int *, int);
 void output(int *, int);
@@ -119,7 +120,7 @@ int main()
             case 11:
             {
                 clock_t start = clock();
-                //Shellsort(b,n);
+                Shellsort(b,n);
                 clock_t end = clock();
                 cout << "Time: " << end - start << endl;
                 break;
@@ -332,6 +333,18 @@ void ShakerSort(int *a,int l,int r){
         l=ping;
     }
 }
+void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau do tao bien j de so sanh j voi cac bien truoc so gap
+    for(int gap=n/2;gap>0;gap/=2){//tinh khoang cach de phan hoach mang
+        for(int i=gap;i<n;i++){
+            int j=i;// gan i tai vi tri j
+            int temp=a[i];// tao bien trung gian
+            for(j=i;j>=gap&&temp<a[j-gap];j-=gap){
+                a[j]=a[j-gap];//
+            }
+            a[j]=temp;
+        }
+    }
+}
 
 int getInteger()
 {
@@ -385,6 +398,7 @@ void Menu()
     cout << "10.Heap Sort" << endl;
     cout << "11.Shell Sort" << endl;
     cout << "12.Radix Sort" << endl;
+    cout << "13.Exit" << endl;
     cout << "Choose an algorithm: " << endl;
 
 }
