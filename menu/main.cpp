@@ -334,6 +334,7 @@ void ShakerSort(int *a,int l,int r){
         l=ping;
     }
 }
+
 void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau do tao bien j de so sanh j voi cac bien truoc so gap
     for(int gap=n/2;gap>0;gap/=2){//tinh khoang cach de phan hoach mang
         for(int i=gap;i<n;i++){
@@ -346,8 +347,6 @@ void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau d
         }
     }
 }
-
-                    
 
 int getMax(int *a, int n)
 {
@@ -379,7 +378,6 @@ void countSort(int *a, int n, int exp)
 
 void RadixSort(int *a, int n)
 {
-
     int m = getMax(a, n);
     for (int exp = 1; m / exp > 0; exp *= 10)
         countSort(a, n, exp);
@@ -395,7 +393,6 @@ int getInteger()
         if(n<100 || n>100000000) cout<<"Enter the array's size again\n";
     } while (n<100 || n>100000000);
     return n;
-
 }
 
 void generateArray(int *a, int n)
