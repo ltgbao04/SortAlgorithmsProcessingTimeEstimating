@@ -13,7 +13,7 @@ void CountingSort(int *, int);
 void QuickSort(int* ,int , int);
 void Merge(int*, int, int, int);
 void MergeSort(int *, int, int);
-void HeapSort(int*, int); 
+void HeapSort(int*, int);
 void ShellSort(int *,int);
 void RadixSort(int *,int);
 int getInteger();
@@ -28,7 +28,7 @@ int main()
    int n = getInteger();
    int* a = new int [n];
    generateArray(a,n);
-   output(a,n);
+   //output(a,n);
    while(1)
    {
         int* b = new int [n];
@@ -43,7 +43,7 @@ int main()
                 clock_t start = clock();
                 SelectionSort(b,n);
                 clock_t end = clock();
-                cout<<"Time: "<< end - start <<endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 2:
@@ -51,7 +51,7 @@ int main()
                 clock_t start = clock();
                 InterchangeSort(b,n);
                 clock_t end = clock();
-                cout<<"Time: "<< end - start <<endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 3:
@@ -59,7 +59,7 @@ int main()
                 clock_t start = clock();
                 InsertionSort(b,n);
                 clock_t end = clock();
-                cout<<"Time: "<< end - start <<endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 4:
@@ -67,7 +67,7 @@ int main()
                 clock_t start = clock();
                 BinaryInsertionSort(b,n);
                 clock_t end = clock();
-                cout<<"Time: "<< end - start <<endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 5:
@@ -75,7 +75,7 @@ int main()
                 clock_t start = clock();
                 BubbleSort(b,n);
                 clock_t end = clock();
-                cout<<"Time: "<< end - start <<endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 6:
@@ -83,7 +83,7 @@ int main()
                 clock_t start = clock();
                 ShakerSort(b,0,n-1);
                 clock_t end = clock();
-                cout << "Time: " << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 7:
@@ -91,7 +91,7 @@ int main()
                 clock_t start = clock();
                 //CountingSort(b,n);
                 clock_t end = clock();
-                cout << "Time:" << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 8:
@@ -99,7 +99,7 @@ int main()
                 clock_t start = clock();
                 QuickSort(b,0,n-1);
                 clock_t end = clock();
-                cout << "Time: " << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 9:
@@ -107,7 +107,7 @@ int main()
                 clock_t start = clock();
                 MergeSort(a,0,n-1);
                 clock_t end = clock();
-                cout << "Time: " << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 10:
@@ -115,7 +115,7 @@ int main()
                 clock_t start = clock();
                 HeapSort(b,n);
                 clock_t end = clock();
-                cout << "Time: " << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 11:
@@ -123,7 +123,7 @@ int main()
                 clock_t start = clock();
                 ShellSort(b,n);
                 clock_t end = clock();
-                cout << "Time: " << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
             case 12:
@@ -131,10 +131,14 @@ int main()
                 clock_t start = clock();
                 //RadixSort(b,n);
                 clock_t end = clock();
-                cout << "Time: " << end - start << endl;
+                cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
             }
-
+        }
+        if(choose==13)
+        {
+            cout << "See you again" ;
+            break;
         }
         cout<<"Do you want to continue (Y/n)";
         char c;
@@ -269,7 +273,7 @@ void BubbleSort(int *a, int n)
     {
         for(int j=0;j<n-1;j++)
             if(a[j]>a[j+1]) swap(a[j],a[j+1]);
-        
+
     }
 }
 
@@ -282,7 +286,7 @@ void InterchangeSort(int *a, int n)
     }
 }
 
-void Heapify(int *a, int n, int i) //source code: https://www.sortvisualizer.com/heapsort/
+void Heapify(int *a, int n, int i)
 {
     int largest = i;
     int left = 2 * i + 1;
@@ -294,19 +298,19 @@ void Heapify(int *a, int n, int i) //source code: https://www.sortvisualizer.com
     if (right < n && a[right] > a[largest])
       largest = right;
 
-    if (largest != i) 
+    if (largest != i)
     {
       swap(a[i], a[largest]);
       Heapify(a, n, largest);
     }
 }
 
-void HeapSort(int *a, int n) 
+void HeapSort(int *a, int n)
 {
     for (int i = n / 2 - 1; i >= 0; i--)
       Heapify(a, n, i);
 
-    for (int i = n - 1; i >= 0; i--) 
+    for (int i = n - 1; i >= 0; i--)
     {
       swap(a[0], a[i]);
       Heapify(a, i, 0);
@@ -341,14 +345,14 @@ void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau d
             int j=i;// gan i tai vi tri j
             int temp=a[i];// tao bien trung gian
             for(j=i;j>=gap&&temp<a[j-gap];j-=gap){
-                a[j]=a[j-gap];//
+                a[j]=a[j-gap];
             }
             a[j]=temp;
         }
     }
 }
 
-int getMax(int *a, int n)//source code: https://www.sortvisualizer.com/radixsort/
+int getMax(int *a, int n)
 {
     int max = a[0];
     for (int i = 1; i < n; i++)
@@ -390,8 +394,8 @@ int getInteger()
     do
     {
         cin>>n;
-        if(n<100 || n>100000000) cout<<"Enter the array's size again\n";
-    } while (n<100 || n>100000000);
+        if(n<=10000 || n>100000000) cout<<"Enter the array's size again\n";
+    } while (n<=10000 || n>100000000);
     return n;
 }
 
