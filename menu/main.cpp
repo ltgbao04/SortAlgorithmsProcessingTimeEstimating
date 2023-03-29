@@ -282,7 +282,7 @@ void InterchangeSort(int *a, int n)
     }
 }
 
-void Heapify(int *a, int n, int i) 
+void Heapify(int *a, int n, int i) //source code: https://www.sortvisualizer.com/heapsort/
 {
     int largest = i;
     int left = 2 * i + 1;
@@ -348,7 +348,7 @@ void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau d
     }
 }
 
-int getMax(int *a, int n)
+int getMax(int *a, int n)//source code: https://www.sortvisualizer.com/radixsort/
 {
     int max = a[0];
     for (int i = 1; i < n; i++)
