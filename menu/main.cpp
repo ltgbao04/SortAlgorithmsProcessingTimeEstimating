@@ -129,7 +129,7 @@ int main()
             case 12:
             {
                 clock_t start = clock();
-                //RadixSort(b,n);
+                RadixSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
