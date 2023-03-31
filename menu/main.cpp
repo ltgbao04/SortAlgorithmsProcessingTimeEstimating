@@ -141,21 +141,21 @@ int main()
             break;
         }
         else{
-        cout<<"Do you want to continue ? (Y/N)"<<endl;
-				char c;
-				cin>>c;
-				if(c=='N'||c=='n') {
-					cout<<"See you again!";
-					break;
-               delete[] b;
-				}
-				else if(c=='Y'||c=='y'){
-					continue;
-				}
-				else{
-					cout<<"Nhap cai gi vay ?";
-					break;
-                }
+            cout<<"Do you want to continue ? (Y/N)"<<endl;
+	     char c;
+	     cin>>c;
+	     if(c=='N'||c=='n') {
+	     cout<<"See you again!";
+	     break;
+             delete[] b;
+	}
+	else if(c=='Y'||c=='y'){
+	     continue;
+	}
+	else{
+	     cout<<"Nhap cai gi vay ?";
+	     break;
+           }
         }
     }
    delete[] a;
