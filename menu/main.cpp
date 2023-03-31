@@ -403,7 +403,7 @@ int getInteger()
     do
     {
         cin>>n;
-        if(n<=10000) cout<<"Enter the array's size again\n";
+        if(n<=10000) cout<<"Enter the array's size again: ";
     } while (n<=10000);
     return n;
 }
