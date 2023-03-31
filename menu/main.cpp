@@ -11,14 +11,12 @@ void BubbleSort(int *, int);
 void ShakerSort(int*, int, int);
 void CountingSort(int *, int);
 void QuickSort(int* ,int , int);
-void Merge(int*, int, int, int);
 void MergeSort(int *, int, int);
 void HeapSort(int*, int); //source code: https://www.sortvisualizer.com/heapsort/
 void ShellSort(int *,int);
 void RadixSort(int *,int); //source code: https://www.sortvisualizer.com/radixsort/
 int getInteger();
 void generateArray(int *, int);
-void output(int *, int);
 void copyArray(int*, int*, int);
 void Menu();
 
@@ -28,7 +26,6 @@ int main()
    int n = getInteger();
    int* a = new int [n];
    generateArray(a,n);
-   //output(a,n);
    while(1)
    {
         int* b = new int [n];
@@ -160,6 +157,51 @@ int main()
     }
    delete[] a;
    return 0;
+}
+
+int getInteger()
+{
+    int n;
+    cout<<"Enter the array's size: ";
+    do
+    {
+        cin>>n;
+        if(n<=10000) cout<<"Enter the array's size again: ";
+    } while (n<=10000);
+    return n;
+}
+
+void generateArray(int *a, int n)
+{
+    srand(time(NULL));
+    for(int i=0;i<n;i++)
+        a[i] = -100000 + rand()%20001;
+}
+
+void copyArray(int *a, int *b, int n)
+{
+    for(int i=0;i<n;i++)
+        b[i] = a[i];
+
+}
+
+void Menu()
+{
+    cout << "\n-------MENU-------" << endl;
+    cout << "1.Selection Sort" << endl;
+    cout << "2.Interchange Sort" << endl;
+    cout << "3.Insertion Sort" << endl;
+    cout << "4.Binary Insertion Sort" << endl;
+    cout << "5.Bubble Sort" << endl;
+    cout << "6.Shaker Sort" << endl;
+    cout << "7.Counting Sort" << endl;
+    cout << "8.Quick Sort" << endl;
+    cout << "9.Merge Sort" << endl;
+    cout << "10.Heap Sort" << endl;
+    cout << "11.Shell Sort" << endl;
+    cout << "12.Radix Sort" << endl;
+    cout << "13.Exit" << endl;
+    cout << "Choose an algorithm: " << endl;
 }
 
 void SelectionSort(int *a, int n)
@@ -394,55 +436,4 @@ void RadixSort(int *a, int n)
     int m = getMax(a, n);
     for (int exp = 1; m / exp > 0; exp *= 10)
         countSort(a, n, exp);
-}
-
-int getInteger()
-{
-    int n;
-    cout<<"Enter the array's size: ";
-    do
-    {
-        cin>>n;
-        if(n<=10000) cout<<"Enter the array's size again: ";
-    } while (n<=10000);
-    return n;
-}
-
-void generateArray(int *a, int n)
-{
-    srand(time(NULL));
-    for(int i=0;i<n;i++)
-        a[i] = -100000 + rand()%20001;
-}
-
-void output(int *a, int n)
-{
-    for(int i=0;i<n;i++)
-        cout << a[i] << " ";
-}
-
-void copyArray(int *a, int *b, int n)
-{
-    for(int i=0;i<n;i++)
-        b[i] = a[i];
-
-}
-
-void Menu()
-{
-    cout << "\n-------MENU-------" << endl;
-    cout << "1.Selection Sort" << endl;
-    cout << "2.Interchange Sort" << endl;
-    cout << "3.Insertion Sort" << endl;
-    cout << "4.Binary Insertion Sort" << endl;
-    cout << "5.Bubble Sort" << endl;
-    cout << "6.Shaker Sort" << endl;
-    cout << "7.Counting Sort" << endl;
-    cout << "8.Quick Sort" << endl;
-    cout << "9.Merge Sort" << endl;
-    cout << "10.Heap Sort" << endl;
-    cout << "11.Shell Sort" << endl;
-    cout << "12.Radix Sort" << endl;
-    cout << "13.Exit" << endl;
-    cout << "Choose an algorithm: " << endl;
 }
