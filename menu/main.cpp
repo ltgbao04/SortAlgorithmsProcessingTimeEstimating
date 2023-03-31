@@ -155,15 +155,12 @@ int main()
 				else{
 					cout<<"Nhap cai gi vay ?";
 					break;
-        
+                }
         }
-
-   }
- 
+    }
    delete[] a;
    return 0;
 }
-
 
 void SelectionSort(int *a, int n)
 {
