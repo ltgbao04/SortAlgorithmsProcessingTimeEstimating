@@ -403,17 +403,16 @@ int getInteger()
     do
     {
         cin>>n;
-        if(n<=1 || n>100000000) cout<<"Enter the array's size again\n";
-    } while (n<=1 || n>100000000);
+        if(n<=10000) cout<<"Enter the array's size again\n";
+    } while (n<=10000);
     return n;
 }
 
 void generateArray(int *a, int n)
 {
-    int c = -10001;
     srand(time(NULL));
     for(int i=0;i<n;i++)
-        a[i] = c + rand()%10001;
+        a[i] = -100000 + rand()%20001;
 }
 
 void output(int *a, int n)
