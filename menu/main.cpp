@@ -86,7 +86,7 @@ int main()
             case 7:
             {
                 clock_t start = clock();
-                //CountingSort(b,n);
+                CountingSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -137,22 +137,24 @@ int main()
             cout << "See you again" ;
             break;
         }
-        else{
+        else
+        {
             cout<<"Do you want to continue ? (Y/N)"<<endl;
-	     char c;
-	     cin>>c;
-	     if(c=='N'||c=='n') {
-	     cout<<"See you again!";
-	     break;
-             delete[] b;
-	}
-	else if(c=='Y'||c=='y'){
-	     continue;
-	}
-	else{
-	     cout<<"Nhap cai gi vay ?";
-	     break;
-           }
+            char c;
+            cin>>c;
+            if(c=='N'||c=='n') 
+            {
+                cout<<"See you again!";
+                delete[] b;
+                break; 
+	        }
+            else if(c=='Y'||c=='y')
+                continue;
+            else
+            {
+                cout<<"Nhap cai gi vay ?";
+                break;
+            }
         }
     }
    delete[] a;
@@ -212,9 +214,7 @@ void SelectionSort(int *a, int n)
         for(int j=i+1;j<n;j++)
         {
             if(a[j]<a[min])
-            {
-                min = j;
-            }
+               min = j;
         }
         swap(a[i],a[min]);
     }
@@ -226,7 +226,8 @@ void InterchangeSort(int *a, int n)
     for(int i=0;i<=n-2;i++)
     {
         for(int j=i+1;j<=n-1;j++)
-            if(a[i]>a[j]) swap(a[i],a[j]);
+            if(a[i]>a[j]) 
+               swap(a[i],a[j]);
     }
 }
 
@@ -255,8 +256,10 @@ void BinaryInsertionSort(int *a, int n)
         while(l<=r)
         {
             int mid = (l+r)/2;
-            if(x<a[mid]) r = mid - 1;
-            else l = mid + 1;
+            if(x<a[mid]) 
+               r = mid - 1;
+            else 
+               l = mid + 1;
         }
         for(int j=i-1;j>=l;j--)
             a[j+1] = a[j];
@@ -279,15 +282,19 @@ void ShakerSort(int *a,int l,int r){
     int j=r;
     int ping=0;
     while(l<r){
-        for(int i=l;i<r;i++){
-            if(a[i]>a[i+1]){
+        for(int i=l;i<r;i++)
+        {
+            if(a[i]>a[i+1])
+            {
                 swap(a[i],a[i+1]);
                 ping = i;
             }
         }
         r=ping;
-        for(int j=r;j>l;j--){
-            if(a[j]<a[j-1]){
+        for(int j=r;j>l;j--)
+        {
+            if(a[j]<a[j-1])
+            {
                 swap(a[j],a[j-1]);
                 ping = j;
             }
