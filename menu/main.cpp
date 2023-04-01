@@ -442,3 +442,23 @@ void RadixSort(int *a, int n)
     for (int exp = 1; m / exp > 0; exp *= 10)
         countSort(a, n, exp);
 }
+
+
+void CountingSort(int *a, int n)
+{
+    int outputArray[10];
+    int countArray[10] = {0};
+    int max = getMax(a,n);
+    for(int i=0;i<n;i++)
+        countArray[a[i]]++;
+    for(int i=1;i<=max;i++)
+        countArray[i] += countArray[i-1];
+    for(int i=n-1;i>=0;i--)
+    {
+        outputArray[countArray[a[i]]-1] = a[i];
+        countArray[a[i]]--;
+    }
+    for(int i=0;i<n;i++) 
+       a[i] = outputArray[i];
+
+}
