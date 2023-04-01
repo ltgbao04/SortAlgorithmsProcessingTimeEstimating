@@ -239,8 +239,10 @@ void InsertionSort(int *a, int n)
         int j;
         for(j=i-1;j>=0;j--)
         {
-            if(x<a[j])  a[j+1] = a[j];
-            else break;
+            if(x<a[j])  
+               a[j+1] = a[j];
+            else 
+               break;
         }
         a[j+1] = x;
     }
@@ -272,7 +274,8 @@ void BubbleSort(int *a, int n)
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<n-1;j++)
-            if(a[j]>a[j+1]) swap(a[j],a[j+1]);
+            if(a[j]>a[j+1]) 
+               swap(a[j],a[j+1]);
 
     }
 }
@@ -313,17 +316,14 @@ void QuickSort(int *a, int l, int r)
     while(i<=j)
     {
         while(a[i]<x)
-        {
             i++; //cho i chay den khi gap gia tri >=x thi dung
-        }
+        
         while(a[j]>x)
-        {
             j--; //cho j chay den khi gap gia tri <=x thi dung
-        }
+        
         if(i<=j)
         {
             swap(a[i], a[j]);
-
             i++;
             j--;
         }//hoan vi 2 phan tu tai i,j sau do tang i, giam j de bat dau cho vi tri moi
@@ -343,15 +343,12 @@ void Merge(int *a, int left, int mid, int right)
     while(!(i>mid && j>right))
     {
         if((i<=mid && j<=right && a[i]<a[j]) || j>right)
-        {
             temp[m++] = a[i++];
-        }
-        else temp[m++] = a[j++];
+        else 
+            temp[m++] = a[j++];
     }
     for(int i=0;i<m;i++)
-    {
         a[left+i] = temp[i];
-    }
     delete[] temp;
 }
 
@@ -371,17 +368,14 @@ void Heapify(int *a, int n, int i)
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
-
-    if (left < n && a[left] > a[largest])
-      largest = left;
-
-    if (right < n && a[right] > a[largest])
-      largest = right;
-
+    if(left < n && a[left] > a[largest])
+       largest = left;
+    if(right < n && a[right] > a[largest])
+       largest = right;
     if (largest != i)
     {
-      swap(a[i], a[largest]);
-      Heapify(a, n, largest);
+       swap(a[i], a[largest]);
+       Heapify(a, n, largest);
     }
 }
 
@@ -389,20 +383,22 @@ void HeapSort(int *a, int n)
 {
     for (int i = n / 2 - 1; i >= 0; i--)
       Heapify(a, n, i);
-
     for (int i = n - 1; i >= 0; i--)
     {
-      swap(a[0], a[i]);
-      Heapify(a, i, 0);
+       swap(a[0], a[i]);
+       Heapify(a, i, 0);
     }
 }
 
 void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau do tao bien j de so sanh j voi cac bien truoc so gap
-    for(int gap=n/2;gap>0;gap/=2){//tinh khoang cach de phan hoach mang
-        for(int i=gap;i<n;i++){
+    for(int gap=n/2;gap>0;gap/=2)
+    {//tinh khoang cach de phan hoach mang
+        for(int i=gap;i<n;i++)
+        {
             int j=i;// gan i tai vi tri j
             int temp=a[i];// tao bien trung gian
-            for(j=i;j>=gap&&temp<a[j-gap];j-=gap){
+            for(j=i;j>=gap&&temp<a[j-gap];j-=gap)
+            {
                 a[j]=a[j-gap];
             }
             a[j]=temp;
@@ -414,8 +410,10 @@ int getMax(int *a, int n)
 {
     int max = a[0];
     for (int i = 1; i < n; i++)
+    {
         if (a[i] > max)
             max = a[i];
+    }
     return max;
 }
 
