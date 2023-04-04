@@ -173,8 +173,8 @@ int getInteger()
     do
     {
         cin>>n;
-        if(n<=1) cout<<"Enter the array's size again: ";
-    } while (n<=1);
+        if(n<=10000) cout<<"Enter the array's size again: ";
+    } while (n<=10000);
     return n;
 }
 
