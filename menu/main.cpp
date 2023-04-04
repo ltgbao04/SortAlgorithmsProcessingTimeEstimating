@@ -3,18 +3,18 @@
 #include <stdlib.h>
 using namespace std;
 
-void SelectionSort(int* ,int);
-void InterchangeSort(int *, int);
-void InsertionSort(int *, int);
-void BinaryInsertionSort(int *, int);
-void BubbleSort(int *, int);
-void ShakerSort(int*, int, int);
-void CountingSort(int *, int);
-void QuickSort(int* ,int , int);
-void MergeSort(int *, int, int);
-void HeapSort(int*, int); //source code: https://www.sortvisualizer.com/heapsort/
-void ShellSort(int *,int);
-void RadixSort(int *,int); //source code: https://www.sortvisualizer.com/radixsort/
+void selectionSort(int* ,int);
+void interchangeSort(int *, int);
+void insertionSort(int *, int);
+void binaryInsertionSort(int *, int);
+void bubbleSort(int *, int);
+void shakerSort(int*, int, int);
+void countingSort(int *, int);
+void quickSort(int* ,int , int);
+void mergeSort(int *, int, int);
+void heapSort(int*, int); //source code: https://www.sortvisualizer.com/heapsort/
+void shellSort(int *,int);
+void radixSort(int *,int); //source code: https://www.sortvisualizer.com/radixSort/
 int getInteger();
 void generateArray(int *, int);
 void copyArray(int*, int*, int);
@@ -38,7 +38,7 @@ int main()
             case 1:
             {
                 clock_t start = clock();
-                SelectionSort(b,n);
+                selectionSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -46,7 +46,7 @@ int main()
             case 2:
             {
                 clock_t start = clock();
-                InterchangeSort(b,n);
+                interchangeSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -54,7 +54,7 @@ int main()
             case 3:
             {
                 clock_t start = clock();
-                InsertionSort(b,n);
+                insertionSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -62,7 +62,7 @@ int main()
             case 4:
             {
                 clock_t start = clock();
-                BinaryInsertionSort(b,n);
+                binaryInsertionSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -70,7 +70,7 @@ int main()
             case 5:
             {
                 clock_t start = clock();
-                BubbleSort(b,n);
+                bubbleSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -78,7 +78,7 @@ int main()
             case 6:
             {
                 clock_t start = clock();
-                ShakerSort(b,0,n-1);
+                shakerSort(b,0,n-1);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -86,7 +86,7 @@ int main()
             case 7:
             {
                 clock_t start = clock();
-                CountingSort(b,n);
+                countingSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -94,7 +94,7 @@ int main()
             case 8:
             {
                 clock_t start = clock();
-                QuickSort(b,0,n-1);
+                quickSort(b,0,n-1);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -102,7 +102,7 @@ int main()
             case 9:
             {
                 clock_t start = clock();
-                MergeSort(a,0,n-1);
+                mergeSort(a,0,n-1);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -110,7 +110,7 @@ int main()
             case 10:
             {
                 clock_t start = clock();
-                HeapSort(b,n);
+                heapSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -118,7 +118,7 @@ int main()
             case 11:
             {
                 clock_t start = clock();
-                ShellSort(b,n);
+                shellSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -126,7 +126,7 @@ int main()
             case 12:
             {
                 clock_t start = clock();
-                RadixSort(b,n);
+                radixSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
                 break;
@@ -206,7 +206,7 @@ void Menu()
     cout << "Choose an algorithm: " << endl;
 }
 
-void SelectionSort(int *a, int n)
+void selectionSort(int *a, int n)
 {
     for(int i=0;i<n;i++)
     {
@@ -221,7 +221,7 @@ void SelectionSort(int *a, int n)
 }
 
 
-void InterchangeSort(int *a, int n)
+void interchangeSort(int *a, int n)
 {
     for(int i=0;i<=n-2;i++)
     {
@@ -231,7 +231,7 @@ void InterchangeSort(int *a, int n)
     }
 }
 
-void InsertionSort(int *a, int n)
+void insertionSort(int *a, int n)
 {
     for(int i=1;i<n;i++)
     {
@@ -248,7 +248,7 @@ void InsertionSort(int *a, int n)
     }
 }
 
-void BinaryInsertionSort(int *a, int n)
+void binaryInsertionSort(int *a, int n)
 {
     for(int i=1;i<n;i++)
     {
@@ -269,7 +269,7 @@ void BinaryInsertionSort(int *a, int n)
     }
 }
 
-void BubbleSort(int *a, int n)
+void bubbleSort(int *a, int n)
 {
     for(int i=0;i<n;i++)
     {
@@ -280,7 +280,7 @@ void BubbleSort(int *a, int n)
     }
 }
 
-void ShakerSort(int *a,int l,int r){
+void shakerSort(int *a,int l,int r){
     int i=l;
     int j=r;
     int ping=0;
@@ -308,7 +308,7 @@ void ShakerSort(int *a,int l,int r){
 
 
 
-void QuickSort(int *a, int l, int r)
+void quickSort(int *a, int l, int r)
 {
     int x = a[(l+r)/2]; //xac dinh gia tri truc x(phan tu chinh giua)
     int i = l; //khoi tao dau doc i
@@ -328,8 +328,8 @@ void QuickSort(int *a, int l, int r)
             j--;
         }//hoan vi 2 phan tu tai i,j sau do tang i, giam j de bat dau cho vi tri moi
     }
-    if(l<j) QuickSort(a,l,j);
-    if(i<r) QuickSort(a,i,r);//tiep tuc cho i,j chay nen lap tu buoc 3 den buoc 5 cho den khi j vuot qua i thi dung
+    if(l<j) quickSort(a,l,j);
+    if(i<r) quickSort(a,i,r);//tiep tuc cho i,j chay nen lap tu buoc 3 den buoc 5 cho den khi j vuot qua i thi dung
 }
 
 
@@ -352,13 +352,13 @@ void Merge(int *a, int left, int mid, int right)
     delete[] temp;
 }
 
-void MergeSort(int *a, int l, int r)
+void mergeSort(int *a, int l, int r)
 {
     if(l<r)
     {
         int mid = (l+r)/2;
-        MergeSort(a,l,mid);
-        MergeSort(a,mid+1,r);
+        mergeSort(a,l,mid);
+        mergeSort(a,mid+1,r);
         Merge(a,l,mid,r);
     }
 }
@@ -379,7 +379,7 @@ void Heapify(int *a, int n, int i)
     }
 }
 
-void HeapSort(int *a, int n)
+void heapSort(int *a, int n)
 {
     for (int i = n / 2 - 1; i >= 0; i--)
       Heapify(a, n, i);
@@ -390,7 +390,7 @@ void HeapSort(int *a, int n)
     }
 }
 
-void ShellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau do tao bien j de so sanh j voi cac bien truoc so gap
+void shellSort(int *a,int n){// bai nay se cho i chay tu gap den cuoi mang,sau do tao bien j de so sanh j voi cac bien truoc so gap
     for(int gap=n/2;gap>0;gap/=2)
     {//tinh khoang cach de phan hoach mang
         for(int i=gap;i<n;i++)
@@ -436,7 +436,7 @@ void countSort(int *a, int n, int exp)
         a[i] = output[i];
 }
 
-void RadixSort(int *a, int n)
+void radixSort(int *a, int n)
 {
     int m = getMax(a, n);
     for (int exp = 1; m / exp > 0; exp *= 10)
@@ -444,7 +444,7 @@ void RadixSort(int *a, int n)
 }
 
 
-void CountingSort(int *a, int n)
+void countingSort(int *a, int n)
 {
     int outputArray[10];
     int countArray[10] = {0};
@@ -460,5 +460,5 @@ void CountingSort(int *a, int n)
     }
     for(int i=0;i<n;i++) 
        a[i] = outputArray[i];
-
+       
 }
