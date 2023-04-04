@@ -10,7 +10,7 @@ void insertionSort(int *, int);
 void binaryInsertionSort(int *, int);
 void bubbleSort(int *, int);
 void shakerSort(int*, int, int);
-void countingSort(int *, int);
+void countingSort(int *, int); //https://www.geeksforgeeks.org/counting-sort/
 void quickSort(int* ,int , int);
 void mergeSort(int *, int, int);
 void heapSort(int*, int); //source code: https://www.sortvisualizer.com/heapsort/
