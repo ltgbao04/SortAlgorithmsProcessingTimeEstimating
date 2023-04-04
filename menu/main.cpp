@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
+#include <cstring>
 using namespace std;
 
 void selectionSort(int* ,int);
@@ -19,6 +20,7 @@ int getInteger();
 void generateArray(int *, int);
 void copyArray(int*, int*, int);
 void Menu();
+void toPositive(int*, int*, int);
 
 
 int main()
@@ -84,11 +86,14 @@ int main()
                 break;
             }
             case 7:
-            {
+            {   
+                int *c = new int[n];
+                toPositive(b,c,n);
                 clock_t start = clock();
-                countingSort(b,n);
+                countingSort(c,n);
                 clock_t end = clock();
                 cout<<"Time: "<< (double)(end - start)/CLOCKS_PER_SEC<<"s" <<endl;
+                delete[] c;
                 break;
             }
             case 8:
@@ -168,8 +173,8 @@ int getInteger()
     do
     {
         cin>>n;
-        if(n<=10000) cout<<"Enter the array's size again: ";
-    } while (n<=10000);
+        if(n<=1) cout<<"Enter the array's size again: ";
+    } while (n<=1);
     return n;
 }
 
@@ -443,12 +448,18 @@ void radixSort(int *a, int n)
         countSort(a, n, exp);
 }
 
-
-void countingSort(int *a, int n)
+void toPositive(int *b, int *c, int n)
 {
-    int outputArray[10];
-    int countArray[10] = {0};
+    for(int i=0;i<n;i++)
+        c[i] = abs(b[i]);
+}
+
+void countingSort(int* a, int n)
+{
     int max = getMax(a,n);
+    int *outputArray = new int [10000000];
+    int *countArray = new int [10000000];
+    memset(countArray,0,1000);
     for(int i=0;i<n;i++)
         countArray[a[i]]++;
     for(int i=1;i<=max;i++)
@@ -458,7 +469,8 @@ void countingSort(int *a, int n)
         outputArray[countArray[a[i]]-1] = a[i];
         countArray[a[i]]--;
     }
-    for(int i=0;i<n;i++) 
-       a[i] = outputArray[i];
-       
+    for(int i=0;i<n;i++)
+        a[i]=outputArray[i];
+    delete[]countArray;
+    delete[]outputArray;
 }
